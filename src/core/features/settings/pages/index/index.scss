@@ -1,0 +1,18 @@
+:host {
+  /* Apply blue primary on this page to avoid orange accents */
+  --ion-color-primary: rgba(48, 67, 154, 1);
+  --ion-color-primary-contrast: #ffffff;
+
+  /* Left navigation list: remove orange press/transition backgrounds */
+  ion-list ion-item {
+    --background-activated: rgba(48, 67, 154, 0.08);
+    --background-focused: rgba(48, 67, 154, 0.04);
+    --background-hover: rgba(48, 67, 154, 0.04);
+    --ripple-color: rgba(48, 67, 154, 0.3);
+  }
+
+  /* Icons tint in the nav list */
+  ion-list ion-item ion-icon {
+    color: rgba(48, 67, 154, 1);
+  }
+}

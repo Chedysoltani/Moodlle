@@ -186,6 +186,7 @@ export default class CoreLoginCredentialsPage implements OnInit, OnDestroy {
 
         try {
             if (!this.siteCheck) {
+                // Attempt to fetch site public config, but do not block if it fails.
                 this.siteCheck = await CoreSites.checkSite(this.site.siteUrl, protocol, 'Credentials page');
                 this.siteCheck.config && this.site.setPublicConfig(this.siteCheck.config);
             }
@@ -200,11 +201,10 @@ export default class CoreLoginCredentialsPage implements OnInit, OnDestroy {
 
             // Check if user needs to authenticate in a browser.
             this.isBrowserSSO = CoreLoginHelper.isSSOLoginNeeded(this.siteCheck.code);
-        } catch (error) {
-            const alert = await CoreAlerts.showError(error);
-
-            this.siteCheckError =
-                (typeof alert?.message === 'object' ? alert.message.value : alert?.message) || 'Error loading site';
+        } catch {
+            // Suppress errors to allow direct login without preliminary checks.
+            this.isBrowserSSO = false;
+            this.siteCheckError = '';
         } finally {
             this.pageLoaded = true;
         }

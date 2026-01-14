@@ -1,4 +1,49 @@
 :host {
+    /* Set primary color locally for this page to replace orange accents */
+    --ion-color-primary: rgba(48, 67, 154, 1);
+    --ion-color-primary-contrast: #ffffff;
+
+    /* Segmented control active styles */
+    ion-segment {
+        --indicator-color: rgba(48, 67, 154, 1);
+        --background: transparent;
+        --color-checked: rgba(48, 67, 154, 1);
+    }
+
+    /* Item press/ink ripple states */
+    ion-item {
+        --background-activated: rgba(48, 67, 154, 0.08);
+        --background-focused: rgba(48, 67, 154, 0.04);
+        --background-hover: rgba(48, 67, 154, 0.04);
+        --ripple-color: rgba(48, 67, 154, 0.3);
+    }
+
+    /* Toggles checked state */
+    ion-toggle {
+        /* Track */
+        --background: rgba(48, 67, 154, 0.15);
+        --background-checked: rgba(48, 67, 154, 0.35);
+        --track-background: rgba(48, 67, 154, 0.15);
+        --track-background-checked: rgba(48, 67, 154, 0.35);
+        /* Handle */
+        --handle-background: #ffffff;
+        --handle-background-checked: rgba(48, 67, 154, 1);
+        --handle-border-color-checked: rgba(48, 67, 154, 1);
+    }
+
+    /* Buttons in this page (e.g., Open Settings) */
+    ion-button.button-solid {
+        --background: rgba(48, 67, 154, 1);
+        --background-hover: rgba(48, 67, 154, 1);
+        --background-activated: rgba(48, 67, 154, 1);
+        --color: #ffffff;
+    }
+
+    /* Select focus/underline color */
+    ion-select {
+        --highlight-color-focused: rgba(48, 67, 154, 1);
+    }
+
     .core-settings-general-font-size ion-segment {
         max-width: 250px;
     }

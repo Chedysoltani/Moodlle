@@ -429,22 +429,11 @@ export class CoreLoginHelperProvider {
      * @returns Path and params.
      */
     async getAddSiteRouteInfo(showKeyboard?: boolean): Promise<[string, Params]> {
-        if (CoreConstants.CONFIG.demoMode) {
-            const demoModeSite = this.getDemoModeSiteInfo();
+        // Bypass site URL screen: always go straight to credentials with a fixed URL.
+        // Replace this URL with your client's platform URL.
+        const DEFAULT_SITE_URL = 'https://demo.moodle.org';
 
-            if (demoModeSite) {
-                return ['/login/credentials', { siteUrl: demoModeSite.url }];
-            }
-        }
-
-        const sites = await this.getAvailableSites();
-
-        if (sites.length === 1) {
-            // Fixed URL is set, go to credentials page.
-            return ['/login/credentials', { siteUrl: sites[0].url }];
-        }
-
-        return ['/login/site', { showKeyboard }];
+        return ['/login/credentials', { siteUrl: DEFAULT_SITE_URL }];
     }
 
     /**

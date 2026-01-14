@@ -203,15 +203,8 @@ export class CoreNavigatorService {
      * @returns Whether navigation suceeded.
      */
     async navigateToLoginCredentials(params: Params = {}): Promise<boolean> {
-        // If necessary, open the previous path to keep the navigation history.
-        if (!this.isCurrent('/login/site') && !this.isCurrent('/login/sites')) {
-            const hasSites = await CoreSites.hasSites();
-
-            await this.navigate(hasSites ? '/login/sites' : '/login/site', { reset: true });
-        }
-
-        // Navigate to login credentials page.
-        return this.navigate('/login/credentials', { params });
+        // Navigate directly to login credentials page without forcing '/login/sites' or '/login/site' first.
+        return this.navigate('/login/credentials', { params, reset: true });
     }
 
     /**

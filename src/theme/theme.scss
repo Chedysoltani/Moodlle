@@ -65,3 +65,29 @@
 /* @import '@ionic/angular/css/palettes/dark.always'; */
 /* @import '@ionic/angular/css/palettes/dark.class'; */
 /* @import '@ionic/angular/css/palettes/dark.system'; */
+
+/* Override: Login button primary styling */
+ion-button.core-login-login-button {
+  --background: rgba(48, 67, 154, 1) !important;
+  --background-hover: rgba(48, 67, 154, 1) !important;
+  --background-activated: rgba(48, 67, 154, 1) !important;
+  --color: #ffffff !important;
+  font-size: 1.1rem;
+}
+
+/* Increase specificity and cover mode-specific classes */
+.core-login-form ion-button.core-login-login-button.button-solid,
+ion-content .core-login-form ion-button.core-login-login-button.button-solid {
+  --background: rgba(48, 67, 154, 1) !important;
+  --background-hover: rgba(48, 67, 154, 1) !important;
+  --background-activated: rgba(48, 67, 154, 1) !important;
+  --ion-color-primary: rgba(48, 67, 154, 1) !important;
+  --ion-color-primary-contrast: #ffffff !important;
+  --color: #ffffff !important;
+}
+
+/* Fallback: target the inner native button element to override any shadow variable resolution */
+ion-button.core-login-login-button .button-native {
+  background: rgba(48, 67, 154, 1) !important;
+  color: #ffffff !important;
+}
